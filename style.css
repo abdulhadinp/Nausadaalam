@@ -404,40 +404,41 @@ html, body {
 }
 
 /* =========================================================
-   3. FLOATING WHATSAPP BUTTON (BOTTOM RIGHT)
+   3. FLOATING CONTACT ACTIONS (BOTTOM RIGHT: TELEGRAM & WHATSAPP)
    ========================================================= */
-.whatsapp-btn {
+.floating-actions {
   position: fixed;
   bottom: 28px;
   right: 28px;
   z-index: 100;
   display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.contact-btn {
+  display: flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 18px 12px 14px;
-  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  padding: 11px 18px 11px 14px;
   color: #ffffff;
   text-decoration: none;
   border-radius: 999px;
-  box-shadow: 
-    0 10px 25px rgba(37, 211, 102, 0.35),
-    0 2px 6px rgba(0, 0, 0, 0.4),
-    inset 0 1px 1px rgba(255, 255, 255, 0.3);
   font-family: var(--font-body);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.3px;
   cursor: pointer;
   opacity: 0;
   transform: translateY(20px) scale(0.9);
   /* Reveal right after the loader finishes */
-  animation: whatsappReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.3s forwards;
+  animation: actionsReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.3s ease,
-              background 0.3s ease;
+              box-shadow 0.3s ease;
 }
 
-@keyframes whatsappReveal {
+@keyframes actionsReveal {
   0% {
     opacity: 0;
     transform: translateY(20px) scale(0.9);
@@ -448,45 +449,75 @@ html, body {
   }
 }
 
-.whatsapp-icon {
-  width: 24px;
-  height: 24px;
+/* Telegram Button (Directly above WhatsApp) */
+.telegram-btn {
+  background: linear-gradient(135deg, #2AABEE 0%, #229ED9 100%);
+  box-shadow: 
+    0 10px 25px rgba(42, 171, 238, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  animation-delay: 1.25s;
+}
+
+.telegram-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 
+    0 14px 32px rgba(42, 171, 238, 0.55),
+    0 0 22px rgba(42, 171, 238, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+/* WhatsApp Button */
+.whatsapp-btn {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  box-shadow: 
+    0 10px 25px rgba(37, 211, 102, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  animation-delay: 1.35s;
+}
+
+.whatsapp-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 
+    0 14px 32px rgba(37, 211, 102, 0.55),
+    0 0 22px rgba(37, 211, 102, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.contact-icon {
+  width: 22px;
+  height: 22px;
   flex-shrink: 0;
   transition: transform 0.3s ease;
 }
 
-.whatsapp-label {
+.contact-label {
   white-space: nowrap;
 }
 
-/* Interactive Hover & Tap states */
-.whatsapp-btn:hover {
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 
-    0 14px 32px rgba(37, 211, 102, 0.5),
-    0 0 20px rgba(37, 211, 102, 0.4),
-    inset 0 1px 1px rgba(255, 255, 255, 0.4);
-}
-
-.whatsapp-btn:hover .whatsapp-icon {
+.contact-btn:hover .contact-icon {
   transform: rotate(-8deg) scale(1.1);
 }
 
-.whatsapp-btn:active {
+.contact-btn:active {
   transform: translateY(-1px) scale(0.98);
-  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.3);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
 
 @media (max-width: 640px) {
-  .whatsapp-btn {
+  .floating-actions {
     bottom: 20px;
     right: 20px;
+    gap: 10px;
+  }
+  .contact-btn {
     padding: 10px 14px 10px 12px;
     font-size: 0.85rem;
   }
-  .whatsapp-icon {
-    width: 22px;
-    height: 22px;
+  .contact-icon {
+    width: 20px;
+    height: 20px;
   }
 }
 
