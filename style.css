@@ -490,3 +490,16 @@ html, body {
   }
 }
 
+/* =========================================================
+   4. CURSOR TRAILING LINE CANVAS
+   ========================================================= */
+#cursor-trail {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 10;
+}
+
+
